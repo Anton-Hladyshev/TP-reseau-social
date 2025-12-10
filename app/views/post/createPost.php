@@ -1,29 +1,26 @@
 <h1 class="mb-4">Créer un nouveau message</h1>
 
 <form action="?c=Post&a=enregistrer" method="post" enctype="multipart/form-data">
-    
+
     <div class="mb-3">
         <label for="titre" class="form-label fw-semibold">Titre du message :</label>
-        <input 
-            type="text" 
-            class="form-control" 
-            name="titre" 
-            id="titre" 
-            placeholder="Saisissez un titre court et percutant"
-            required
-        >
+        <input
+            type="text"
+            class="form-control"
+            name="titre"
+            id="titre"
+            required>
     </div>
 
     <div class="mb-3">
         <label for="contenu" class="form-label fw-semibold">Contenu du message :</label>
-        <textarea 
-            class="form-control" 
-            name="contenu" 
-            id="contenu" 
-            rows="5" 
-            placeholder="Écrivez votre message ici..."
-            required
-        ></textarea>
+        <textarea
+            class="form-control"
+            name="contenu"
+            id="contenu"
+            rows="5"
+            placeholder="Écrivez votre message ici"
+            required></textarea>
     </div>
 
     <div class="d-grid gap-2">
