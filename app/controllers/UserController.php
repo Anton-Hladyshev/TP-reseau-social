@@ -23,11 +23,11 @@ class UserController {
     }
 
     public function createUser() {
-        $usernamen = $_POST['username'];
+        $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $lastInsertId = $this->userModel->add($usernamen, $email, $password);
+        $lastInsertId = $this->userModel->add($username, $email, $password);
 
         if ($lastInsertId) {
             include __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'connexion_view.php';
