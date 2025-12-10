@@ -14,6 +14,15 @@
                         Par <?php echo htmlspecialchars($post['nom'] ?? $post['username'] ?? ''); ?> —
                         <?php echo htmlspecialchars($post['date_publication'] ?? ''); ?>
                     </p>
+
+                    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $post['utilisateur_id']): ?>
+                        <a href="?c=PostController&a=edit&id=<?php echo (int)$post['id']; ?>" class="btn btn-sm btn-outline-primary">Modifier</a>
+
+                        <form method="post" action="?c=PostController&a=delete" class="d-inline" onsubmit="return confirm('Confirmer la suppression de ce message ?');">
+                            <input type="hidden" name="id" value="<?php echo (int)$post['id']; ?>">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Supprimer</button>
+                        </form>
+                    <?php endif; ?>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -25,5 +34,4 @@
         Vous devez être connecté pour voir les mesages.
         <a href="index.php?c=UserController&a=loginUser" class="alert-link">Se connecter</a>
     </div>
-
 <?php endif; ?>
