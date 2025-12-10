@@ -45,7 +45,14 @@
                 
                 <ul class="navbar-nav">
                     <?php 
-                    if (isset($_SESSION['user_id'])) { ?>
+                    if (isset($_SESSION['user_id'])) { 
+                        $username = $_SESSION['username'] ?? 'Utilisateur'; 
+                        ?>
+                        <li class="nav-item me-3 d-flex align-items-center">
+                            <span class="navbar-text fw-semibold text-success">
+                                Salut, <?php echo htmlspecialchars($username); ?> !
+                            </span>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?c=User&a=profil">Mon Profil</a>
                         </li>

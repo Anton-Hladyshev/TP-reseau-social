@@ -1,5 +1,5 @@
 <h1>Inscription</h1>
-<form action="/inscription" method="POST">
+<form action="?c=User&a=creer" method="POST">
     <label for="username">Nom d'utilisateur:</label>
     <input type="text" id="username" name="username" required>
 

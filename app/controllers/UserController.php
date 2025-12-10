@@ -25,7 +25,7 @@ class UserController {
     public function createUser() {
         $username = $_POST['username'];
         $email = $_POST['email'];
-        $password = $_POST['password'];
+        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
         $lastInsertId = $this->userModel->add($username, $email, $password);
 

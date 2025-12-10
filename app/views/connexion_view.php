@@ -1,5 +1,5 @@
 <h1>Connexion</h1>
-<form action="/connexion" method="POST">
+<form action="?c=User&a=login" method="POST">
     <label for="email">Adresse e-mail:</label>
     <input type="email" id="email" name="email" required>
 
