@@ -8,7 +8,9 @@
         <?php foreach ($posts as $post): ?>
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title"><?php echo htmlspecialchars($post['titre'] ?? ''); ?></h5>
+                    <a href="index.php?c=PostController&a=detail&id=<?php echo (int)$post['id']; ?>" style="text-decoration: none; color: inherit;">
+                        <h5 class="card-title"><?php echo htmlspecialchars($post['titre'] ?? ''); ?></h5>
+                    </a>
                     <p class="card-text"><?php echo nl2br(htmlspecialchars($post['contenu'] ?? '')); ?></p>
                     <p class="text-muted small">
                         Par <?php echo htmlspecialchars($post['nom'] ?? $post['username'] ?? ''); ?> —
@@ -18,9 +20,7 @@
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
-
 <?php else: ?>
-
     <div class="alert alert-warning" role="alert">
         Vous devez être connecté pour voir les mesages.
         <a href="index.php?c=UserController&a=loginUser" class="alert-link">Se connecter</a>
