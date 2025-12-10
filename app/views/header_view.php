@@ -26,7 +26,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="?c=Post&a=index">Fil d'actualité</a>
                     </li>
-                    
+
+                    <?php if (isset($_SESSION['user_id'])) { ?>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-success btn-sm ms-2" href='?c=Post&a=ajouter'>
+                                + Créer un message
+                            </a>
+                        </li>
+                    <?php } ?>
+
                     <?php 
                     if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) { ?>
                         <li class="nav-item dropdown">
@@ -34,8 +42,6 @@
                                 Administration
                              </a>
                              <ul class="dropdown-menu" aria-labelledby="adminDropdown">
-                                <li><a class="dropdown-item" href='?c=Post&a=ajouter'>Créer un message</a></li>
-                                <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href='?c=Admin&a=utilisateurs'>Gérer les utilisateurs</a></li>
                              </ul>
                         </li>
@@ -72,7 +78,7 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="container w-75 m-auto mt-4">
         </div>
 </body>

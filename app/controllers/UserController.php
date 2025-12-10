@@ -10,11 +10,11 @@ class UserController {
     }
 
     public function getInscriptionView() {
-        include __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'inscription_view.php';
+        require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'inscription_view.php';
     }
 
     public function getLoginView() {
-        include __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'connexion_view.php';
+        require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'connexion_view.php';
     }
 
     public function index() {
@@ -30,7 +30,7 @@ class UserController {
         $lastInsertId = $this->userModel->add($username, $email, $password);
 
         if ($lastInsertId) {
-            include __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'connexion_view.php';
+            require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'connexion_view.php';
         }
         else {
             echo "Erreur lors de l'inscription.";

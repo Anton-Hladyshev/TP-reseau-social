@@ -2,6 +2,7 @@
 session_start();
 
 require_once __DIR__.DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'controllers'.DIRECTORY_SEPARATOR.'UserController.php';
+require_once __DIR__.DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'controllers'.DIRECTORY_SEPARATOR.'PostController.php';
 require_once __DIR__.DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'header_view.php';
 
 
@@ -29,4 +30,20 @@ switch (strtolower($controller)) {
                 echo "Action non reconnue pour UserController.";
         }
         break;
+
+    case 'post':
+        $postController = new PostController();
+        switch (strtolower($action)) {
+            case 'create':
+                $postController->getCreationView();
+                break;
+            case 'store':
+                $postController->createPost();
+                break;
+            case 'update':
+                $postController->getUpdateView();
+                break;
+            default:
+                echo "Action non reconnue pour PostController.";
+        }
 }
