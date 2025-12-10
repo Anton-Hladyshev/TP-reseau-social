@@ -13,5 +13,5 @@
 <hr>
 <div id="boutons">
     <button id="bouton_modifier_profil" class="btn btn-primary d-none">Modifier le profil</button>
-    <a href="?c=home" class="btn btn-primary">Retour à l'accueil</a>
+    <a href="?c=HomeView" class="btn btn-primary">Retour à l'accueil</a>
 </div>
