@@ -2,11 +2,11 @@
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'Database.php';
 
-class User
+class Message
 {
     private $conn;
 
-    public function __construct($id, $username, $email, $password)
+    public function __construct($id, $titre, $contenu, $utilisateur_id)
     {
         $database = new Database();
         $this->conn = $database->getConnection();
@@ -14,14 +14,14 @@ class User
 
     public function findAll()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM users");
+        $stmt = $this->conn->prepare("SELECT * FROM posts");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function find($id)
     {
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
+        $stmt = $this->conn->prepare("SELECT * FROM posts WHERE id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -29,7 +29,7 @@ class User
 
     public function findBy(array $params)
     {
-        $query = "SELECT * FROM users WHERE " . implode(
+        $query = "SELECT * FROM posts WHERE " . implode(
             " AND",
             array_map(
                 function ($key) {
@@ -50,28 +50,28 @@ class User
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function add($nom, $email, $password)
+    public function add($titre, $contenu, $utilisateur_id)
     {
-        $stmt = $this->conn->prepare("INSERT INTO users (nom, email, password, date_inscription) VALUES (:nom, :email, :password, NOW())");
-        $stmt->bindParam(':nom', $nom);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', password_hash($password, PASSWORD_BCRYPT));
+        $stmt = $this->conn->prepare("INSERT INTO posts (titre, contenu, utilisateur_id, date_publication) VALUES (:titre, :contenu, :utilisateur_id, NOW())");
+        $stmt->bindParam(':titre', $titre);
+        $stmt->bindParam(':contenu', $contenu);
+        $stmt->bindParam(':utilisateur_id', $utilisateur_id);
         return $stmt->execute();
     }
 
-    public function update($id, $nom, $email, $password)
+    public function update($id, $titre, $contenu, $utilisateur_id)
     {
-        $stmt = $this->conn->prepare("UPDATE users SET nom = :nom, email = :email, password = :password WHERE id = :id");
+        $stmt = $this->conn->prepare("UPDATE posts SET titre = :titre, contenu = :contenu, utilisateur_id = :utilisateur_id WHERE id = :id");
         $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':nom', $nom);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', password_hash($password, PASSWORD_BCRYPT));
+        $stmt->bindParam(':titre', $titre);
+        $stmt->bindParam(':contenu', $contenu);
+        $stmt->bindParam(':utilisateur_id', $utilisateur_id);
         return $stmt->execute();
     }
 
     public function delete($id)
     {
-        $stmt = $this->conn->prepare("DELETE FROM users WHERE id = :id");
+        $stmt = $this->conn->prepare("DELETE FROM posts WHERE id = :id");
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
