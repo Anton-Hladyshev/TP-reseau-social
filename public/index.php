@@ -4,3 +4,4 @@ require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'app'.DIRECTOR
 
 $controller = isset($_GET['c']) ? $_GET['c'] : 'home';
 $action = isset($_GET['a']) ? $_GET['a'] : 'index';
+
