@@ -28,7 +28,6 @@
                     </li>
                     
                     <?php 
-                    // Предполагаем, что администратор может управлять пользователями или постами
                     if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) { ?>
                         <li class="nav-item dropdown">
                              <a class="nav-link dropdown-toggle text-danger" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

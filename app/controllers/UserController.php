@@ -49,14 +49,14 @@ class UserController {
                 // Authentification réussie
                 session_start();
                 $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
+                $_SESSION['username'] = $user['nom'];
                 $_SESSION['email'] = $user['email'];
-                require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'home_view.php';
-                return;
+                header('Location: ?c=home');
+                exit();
             }
         } else {
-            require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'connexion_view.php';
-            echo "Échec de la connexion. Vérifiez vos identifiants.";
+            header('Location: ?c=User&a=connexion');
+            exit();
         }
     }
 }
